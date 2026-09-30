@@ -1,0 +1,121 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+
+    "users": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || auth.token.role === 'admin')",
+        ".write": "auth != null && (auth.uid === $uid || auth.token.role === 'admin')",
+        "role": { ".write": "auth.token.role === 'admin'" },
+        "active": { ".write": "auth.token.role === 'admin'" }
+      }
+    },
+
+    "addresses": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    },
+
+    "services": {
+      ".read": true,
+      ".write": "auth.token.role === 'admin'"
+    },
+
+    "staff": {
+      ".read": "auth != null",
+      ".write": "auth.token.role === 'admin'"
+    },
+
+    "settings": {
+      ".read": "auth != null",
+      ".write": "auth.token.role === 'admin'"
+    },
+
+    "slots": {
+      "$date": {
+        ".read": "auth != null",
+        ".write": false
+      }
+    },
+
+    "bookings": {
+      ".indexOn": ["customerId", "date", "status"],
+      ".read": "auth.token.role === 'admin'",
+      ".write": false,
+      "$bookingId": {
+        ".read": "auth != null && (data.child('customerId').val() === auth.uid || auth.token.role === 'admin' || (auth.token.role === 'staff' && data.child('staffUid').val() === auth.uid))"
+      }
+    },
+
+    "userBookings": {
+      "$uid": {
+        ".indexOn": ["date", "status", "createdAt"],
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": false
+      }
+    },
+
+    "staffBookings": {
+      "$staffId": {
+        ".read": "auth.token.role === 'admin' || (auth.token.role === 'staff' && root.child('staff').child($staffId).child('uid').val() === auth.uid)",
+        ".write": false
+      }
+    },
+
+    "bookingsByDate": {
+      ".read": "auth.token.role === 'admin'",
+      ".write": false
+    },
+
+    "billing": {
+      ".indexOn": ["customerId", "issuedAt", "status"],
+      ".read": "auth.token.role === 'admin'",
+      ".write": false
+    },
+
+    "userBilling": {
+      "$uid": {
+        ".indexOn": ["issuedAt"],
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": false
+      }
+    },
+
+    "slotHistory": {
+      ".indexOn": ["date", "staffId", "customerId", "timestamp"],
+      ".read": "auth.token.role === 'admin'",
+      ".write": false
+    },
+
+    "userSlotHistory": {
+      "$uid": {
+        ".indexOn": ["timestamp"],
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": false
+      }
+    },
+
+    "notifications": {
+      "$uid": {
+        ".indexOn": ["createdAt"],
+        ".read": "auth != null && auth.uid === $uid",
+        "$nid": {
+          ".write": "auth != null && auth.uid === $uid && newData.child('read').isBoolean()"
+        }
+      }
+    },
+
+    "reports": {
+      ".read": "auth.token.role === 'admin'",
+      ".write": false
+    },
+
+    "auditLogs": {
+      ".read": "auth.token.role === 'admin'",
+      ".write": false
+    }
+  }
+}

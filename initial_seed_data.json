@@ -1,0 +1,102 @@
+{
+  "settings": {
+    "salon": {
+      "name": "Glow Salon",
+      "phone": "+919876543210",
+      "address": "123 Main Street, Sector 5",
+      "lat": 19.2813,
+      "lng": 73.0483
+    },
+    "slotIntervalMin": 30,
+    "advanceBookingDays": 30,
+    "cancellationWindowHours": 4,
+    "autoConfirm": true,
+    "homeService": {
+      "enabled": true,
+      "radiusKm": 10,
+      "charge": 10000,
+      "travelBufferMin": 30,
+      "serviceablePincodes": {
+        "421302": true,
+        "421301": true
+      }
+    },
+    "taxPercent": 18,
+    "currency": "INR"
+  },
+  "services": {
+    "svc_haircut": {
+      "name": "Haircut & Styling",
+      "category": "Hair",
+      "description": "Wash, cut and blow-dry styling",
+      "durationMin": 45,
+      "price": 45000,
+      "modes": {
+        "inSalon": true,
+        "atHome": true
+      },
+      "imageUrl": "",
+      "active": true,
+      "sortOrder": 1
+    },
+    "svc_facial": {
+      "name": "Glow Facial",
+      "category": "Skin",
+      "description": "Deep cleansing and hydrating facial massage",
+      "durationMin": 60,
+      "price": 80000,
+      "modes": {
+        "inSalon": true,
+        "atHome": true
+      },
+      "imageUrl": "",
+      "active": true,
+      "sortOrder": 2
+    },
+    "svc_pedicure": {
+      "name": "Deluxe Pedicure",
+      "category": "Nails",
+      "description": "Foot soak, exfoliation, nail shaping and polish",
+      "durationMin": 45,
+      "price": 50000,
+      "modes": {
+        "inSalon": true,
+        "atHome": false
+      },
+      "imageUrl": "",
+      "active": true,
+      "sortOrder": 3
+    }
+  },
+  "staff": {
+    "staff_anita": {
+      "uid": "UID_STAFF_ANITA",
+      "name": "Anita Sharma",
+      "photoUrl": "",
+      "skills": {
+        "svc_haircut": true,
+        "svc_facial": true
+      },
+      "offersHomeService": true,
+      "workingHours": {
+        "mon": { "start": "10:00", "end": "19:00" },
+        "tue": { "start": "10:00", "end": "19:00" },
+        "wed": { "start": "10:00", "end": "19:00" },
+        "thu": { "start": "10:00", "end": "19:00" },
+        "fri": { "start": "10:00", "end": "19:00" },
+        "sat": { "start": "10:00", "end": "20:00" },
+        "sun": null
+      },
+      "breaks": {
+        "mon": [{ "start": "13:00", "end": "14:00" }],
+        "tue": [{ "start": "13:00", "end": "14:00" }],
+        "wed": [{ "start": "13:00", "end": "14:00" }],
+        "thu": [{ "start": "13:00", "end": "14:00" }],
+        "fri": [{ "start": "13:00", "end": "14:00" }],
+        "sat": [{ "start": "13:00", "end": "14:00" }]
+      },
+      "daysOff": {},
+      "active": true
+    }
+  }
+}
