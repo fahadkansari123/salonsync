@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "466380869991",
+    "firebase_url": "https://salonsync-c519b-default-rtdb.firebaseio.com",
+    "project_id": "salonsync-c519b",
+    "storage_bucket": "salonsync-c519b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:466380869991:android:a1b2c3d4e5f67890",
+        "android_client_info": {
+          "package_name": "com.salonsync.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAW9KzyIZLXxK5SYZl0A9LG_XNQMLaHXfw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
